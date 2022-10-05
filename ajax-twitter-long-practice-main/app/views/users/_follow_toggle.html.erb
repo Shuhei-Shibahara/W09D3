@@ -5,12 +5,12 @@
 
 
   <% if is_following %>
-    <input id='<%=user.id%>' data-follow-state='followed' type="hidden" name="_method" value="DELETE">
+    <input id='<%=user.id%>' data-follow-state= 'false' type="hidden" name="_method" value="DELETE">
 
   <% end %>
   
   <button class="follow-toggle" id='<%=user.id%>' 
-    data-follow-state='unFollowed'
+    data-follow-state= 'true'
   >
     <%= is_following ? "Unfollow!" : "Follow!" %>
   </button>
