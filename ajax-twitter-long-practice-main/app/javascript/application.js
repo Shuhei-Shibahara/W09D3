@@ -4,7 +4,7 @@ import InfiniteTweets from "./infinite_tweets";
 import UsersSearch from "./users_search";
 import TweetCompose from "./tweet_compose";
 import Followers from "./followers";
-import { API } from "./util";
+import { API, foo } from "./util";
 
 if (process.env.NODE_ENV !== "production") {
   window.API = API;
@@ -17,8 +17,8 @@ let tweetComposeSelector = "";
 let followersSelector = "";
 let coolParagraphSelector = "";
 
-
 document.querySelectorAll(followToggleSelector).forEach((el) => {
+
   new FollowToggle(el);
 });
 
