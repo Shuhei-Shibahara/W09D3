@@ -15,6 +15,7 @@ let infiniteTweetsSelector = "";
 let usersSearchSelector = "";
 let tweetComposeSelector = "";
 let followersSelector = "";
+let coolParagraphSelector = "";
 
 
 document.querySelectorAll(followToggleSelector).forEach((el) => {
@@ -35,4 +36,8 @@ document.querySelectorAll(tweetComposeSelector).forEach((el) => {
 
 document.querySelectorAll(followersSelector).forEach((el) => {
   new Followers(el);
+});
+
+document.querySelectorAll(coolParagraphSelector).forEach((el) => {
+  new Paragraph(el)
 });
