@@ -12,7 +12,7 @@ export default class FollowToggle {
 
   async handleClick(event) {
       event.preventDefault()
-      if(this.followState === 'true'){
+      if(this.followState === 'followed'){
         this.unfollow();
       }else{
         this.follow();
@@ -22,18 +22,42 @@ export default class FollowToggle {
 
   async follow() {
     // Your code here
-    this.followState = 'true';
-
+    // debugger
+    this.followState = 'followed';
+    let res = await API.followUser(this.toggleButton.dataset.userId)
+    this.render();
+    // let resjson = await res.json()
+    // console.log(resjson)
   }
 
   async unfollow() {
     // Your code here
-    this.followState = 'false';
+    // debugger
+    this.followState = 'unfollowed';
+    let res = await API.unfollowUser(this.toggleButton.dataset.userId)
+    this.render();
+
   }
 
   render() {
     switch (this.followState) {
       // Your code here
+      case this.followState === 'followed':
+        this.toggleButton.disable = false;
+        this.toggleButton.innerHTML = 'Unfollow';
+        break
+      case this.followState === 'unfollowed':
+        this.toggleButton.disable = false;
+        this.toggleButton.innerHTML = 'Follow';
+        break
+      case this.followState === 'following':
+        this.toggleButton.disable = true;
+        this.toggleButton.innerHTML = 'Following...';
+        break
+      case this.followState === 'unfollowing':
+        this.toggleButton.disable = true;
+        this.toggleButton.innerHTML = 'Unfollow...';
+        break
     }
   }
 

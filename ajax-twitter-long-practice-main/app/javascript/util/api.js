@@ -11,12 +11,13 @@ export async function followUser(id){
   return await fetch(`/users/${id}/follow`, {
     method: "POST",
     headers: {
-      'Accept': 'application/json',
+      Accept: 'application/json',
       "Content-Type": "application/json",
       'X-CSRF-TOKEN': csrfToken
     }
   }).then((res) => {
-    res.json()
+    if (!res.ok) { throw res; }
+    return res.json();
   }).then((data) => {
     console.log(data)
   }).catch((err) => {
@@ -27,16 +28,17 @@ export async function followUser(id){
 
 
 export async function unfollowUser(id){
-
+// debugger
   return await fetch(`/users/${id}/follow`, {
     method: "DELETE",
     headers: {
-      'Accept': 'application/json',
+      Accept: 'application/json',
       "Content-Type": "application/json",
       'X-CSRF-TOKEN': csrfToken
     }
   }).then((res) => {
-    res.json()
+    if (!res.ok) {throw res; }
+    return res.json();
   }).then((data) => {
     console.log(data)
   }).catch((err) => {

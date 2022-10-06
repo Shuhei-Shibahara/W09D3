@@ -18,7 +18,6 @@ let followersSelector = "";
 let coolParagraphSelector = "";
 
 document.querySelectorAll(followToggleSelector).forEach((el) => {
-
   new FollowToggle(el);
 });
 
